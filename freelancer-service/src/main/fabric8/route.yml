@@ -1,0 +1,9 @@
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    metadata:
+    labels:
+      app: freelancer-service
+    name: ${project.artifactId}
