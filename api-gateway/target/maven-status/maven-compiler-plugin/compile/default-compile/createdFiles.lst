@@ -1,0 +1,6 @@
+com/redhat/rhoar/homework/api/gateway/RestApplication.class
+com/redhat/rhoar/homework/api/gateway/ProjectGateway.class
+com/redhat/rhoar/homework/api/gateway/FreelancerGateway.class
+com/redhat/rhoar/homework/api/gateway/model/Project.class
+com/redhat/rhoar/homework/api/gateway/model/Freelancer.class
+com/redhat/rhoar/homework/api/gateway/model/Status.class

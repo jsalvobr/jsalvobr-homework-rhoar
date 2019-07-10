@@ -1,0 +1,7 @@
+freelancer:
+  service:
+    url: http://mock.store.service
+project:
+  service:
+    url: http://mock.store.service
+    
