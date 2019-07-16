@@ -7,7 +7,6 @@ metadata:
     description: Project service persistent template for MongoDB
   name: project-service-mongodb
 objects:
-# Project Service
 - apiVersion: v1
   kind: Service
   metadata:
@@ -47,9 +46,15 @@ objects:
             containerName: project-mongodb
             env:
             - name: MONGODB_INIT
-              value: db.projects.insert({"_projectId":"00001","ownerFirstName":"primer nombre","ownerLastName":"apellido",
-                "ownerEmailAddress":"email@redhat.com","projectTitle":"titulo de proyecto","projectDescription":"alguna descripcion",
-                "projectStatus":"open"});
+              value: db.projects.insert({"projectId":"00001","ownerFirstName":"Leon","ownerLastName":"Bravo",
+                "ownerEmailAddress":"email1@redhat.cl","projectTitle":"RHOAR","projectDescription":"proyecto de rhoar",
+                "status":"open"});
+                db.projects.insert({"projectId":"00002","ownerFirstName":"Javier","ownerLastName":"Ibarra",
+                "ownerEmailAddress":"email2@redhat.cl","projectTitle":"OCP","projectDescription":"proyecto de openshift",
+                "status":"completed"});
+                db.projects.insert({"projectId":"00003","ownerFirstName":"Daniela","ownerLastName":"Salvo",
+                "ownerEmailAddress":"email3@redhat.cl","projectTitle":"Automate","projectDescription":"proyecto de automatizacion",
+                "status":"open"});
           failurePolicy: ignore
         timeoutSeconds: 600
       resources: {}

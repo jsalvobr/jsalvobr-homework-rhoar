@@ -1,0 +1,6 @@
+freelancer:
+  service:
+    url: http://freelancer-service-jsalvobr-homework-rhoar-temporal.192.168.42.182.nip.io
+project:
+  service:
+    url: http://project-service-jsalvobr-homework-rhoar-temporal.192.168.42.182.nip.io

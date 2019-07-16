@@ -8,5 +8,6 @@ public interface FreelancerService {
 
 	public List<Freelancer> getFreelancers();
 	public Freelancer getFreelancer(String freelancerId);
+	public Freelancer addFreelancer(Freelancer freelancerId);
 
 }

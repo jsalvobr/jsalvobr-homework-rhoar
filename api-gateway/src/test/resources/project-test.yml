@@ -1,0 +1,6 @@
+freelancer:
+  service:
+    url: http://localhost:11111
+project:
+  service:
+    url: http://localhost:11111

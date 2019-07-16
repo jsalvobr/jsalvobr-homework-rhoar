@@ -10,7 +10,6 @@ public class Freelancer implements Serializable {
 	 */
 	private static final long serialVersionUID = 8845477575223466600L;
 
-	
 	private String freelancerId;
 
 	private String firstName;

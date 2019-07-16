@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,12 @@ public class FreelancerServiceImpl implements FreelancerService {
 
 	public Freelancer getFreelancer(String freelancerId) {
 		Freelancer freelancer = em.find(Freelancer.class, freelancerId);
+		return freelancer;
+	}
+	
+	@Transactional
+	public Freelancer addFreelancer(Freelancer freelancer) {
+		em.persist(freelancer);
 		return freelancer;
 	}
 

@@ -27,5 +27,6 @@ public interface ProjectService {
 	void getProjects(Handler<AsyncResult<List<Project>>> resulthandler);
 	void getProject(String projectId, Handler<AsyncResult<Project>> resulthandler);
 	void getProjectsWithStatus(String theStatus,Handler<AsyncResult<List<Project>>> resulthandler);
+	void ping(Handler<AsyncResult<String>> resultHandler);
 
 }

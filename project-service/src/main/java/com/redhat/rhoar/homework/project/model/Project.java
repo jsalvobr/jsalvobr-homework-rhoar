@@ -25,7 +25,7 @@ public class Project implements Serializable {
 		this.ownerEmailAddress = json.getString("ownerEmailAddress");
 		this.projectTitle = json.getString("projectTitle");
 		this.projectDescription = json.getString("projectDescription");
-		this.status = (Status) json.getValue("status");
+		this.status = Status.valueOf(json.getString("status"));
 	}
 	
 

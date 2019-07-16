@@ -9,6 +9,8 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.healthchecks.HealthCheckHandler;
+import io.vertx.ext.healthchecks.Status;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
@@ -20,7 +22,6 @@ public class ApiVerticle extends AbstractVerticle {
 	public ApiVerticle(ProjectService projectService) {
 		this.projectService = projectService;
 	}
-
 	
 	@Override
     public void start(Future<Void> startFuture) throws Exception {
@@ -33,6 +34,9 @@ public class ApiVerticle extends AbstractVerticle {
 
         //Health Checks
         router.get("/health/readiness").handler(rc -> rc.response().end("OK"));
+        HealthCheckHandler healthCheckHandler = HealthCheckHandler.create(vertx)
+                .register("health", f -> health(f));
+        router.get("/health/liveness").handler(healthCheckHandler);
 
         vertx.createHttpServer()
             .requestHandler(router::accept)
@@ -63,7 +67,7 @@ public class ApiVerticle extends AbstractVerticle {
     }
 	
 	private void getProject(RoutingContext rc) {
-        String projectId = rc.request().getParam("itemid");
+        String projectId = rc.request().getParam("projectId");
         projectService.getProject(projectId, ar -> {
             if (ar.succeeded()) {
                 Project project = ar.result();
@@ -97,6 +101,21 @@ public class ApiVerticle extends AbstractVerticle {
                     .end(json.encodePrettily());
             } else {
                 rc.fail(ar.cause());
+            }
+        });
+    }
+	
+	private void health(Future<Status> future) {
+        projectService.ping(ar -> {
+            if (ar.succeeded()) {
+                // HealthCheckHandler has a timeout of 1000s. If timeout is exceeded, the future will be failed
+                if (!future.isComplete()) {
+                    future.complete(Status.OK());
+                }
+            } else {
+                if (!future.isComplete()) {
+                    future.complete(Status.KO());
+                }
             }
         });
     }

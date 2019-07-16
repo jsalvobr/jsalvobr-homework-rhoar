@@ -15,7 +15,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 
 
-@Path("/")
+@Path("/gateway")
 public class ProjectGateway {
 	
 	Client client = ClientBuilder.newClient();
@@ -28,20 +28,29 @@ public class ProjectGateway {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/projects")
 	public Response getProjects() {
-		return Response.ok("Hello from Thorntail 1!").build();
+		return client
+			      .target(projectUrl + "/projects")
+			      .request(MediaType.APPLICATION_JSON)
+			      .get();
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/projects/{projectId}")
 	public Response getProject(@PathParam("projectId") String projectId) {
-		return Response.ok("Hello from Thorntail 2!").build();
+		return client
+			      .target(projectUrl + "/projects/" + projectId)
+			      .request(MediaType.APPLICATION_JSON)
+			      .get();
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/projects/status/{theStatus}")
 	public Response getProjectsWithStatus(@PathParam("theStatus") String theStatus) {
-		return Response.ok("Hello from Thorntail 3!").build();
+		return client
+			      .target(projectUrl + "/projects/status/" + theStatus)
+			      .request(MediaType.APPLICATION_JSON)
+			      .get();
 	}
 }

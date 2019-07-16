@@ -2,9 +2,6 @@ package com.redhat.rhoar.homework.api.gateway.model;
 
 import java.io.Serializable;
 
-import javax.json.JsonObject;
-
-
 public class Project implements Serializable {	
 
 	private static final long serialVersionUID = -9204303430821051724L;
@@ -17,17 +14,6 @@ public class Project implements Serializable {
 	private String projectDescription;
 	private Status status;
 	
-	public Project (JsonObject json) {
-		this.projectId = json.getString("projectId");
-		this.ownerFirstName = json.getString("ownerFirstName");
-		this.ownerLastName = json.getString("ownerLastName");
-		this.ownerEmailAddress = json.getString("ownerEmailAddress");
-		this.projectTitle = json.getString("projectTitle");
-		this.projectDescription = json.getString("projectDescription");
-//		this.status = json.getValue("status");
-	}
-	
-
 	public Status getStatus() {
 		return status;
 	}
@@ -85,17 +71,5 @@ public class Project implements Serializable {
 		this.projectDescription = projectDescription;
 	}
 	
-//	public JsonObject toJson() {
-//		final JsonObject json = new JsonObject();
-//		json.put("projectId", this.projectId);
-//		json.put("ownerFirstName", this.ownerFirstName);
-//		json.put("ownerLastName", this.ownerLastName);
-//		json.put("ownerEmailAddress", this.ownerEmailAddress);
-//		json.put("projectTitle", this.projectTitle);
-//		json.put("projectDescription", this.projectDescription);
-//		json.put("status", this.status);
-//		return json;
-		
-//	}
 
 }

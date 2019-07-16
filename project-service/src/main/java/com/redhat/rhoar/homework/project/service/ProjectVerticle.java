@@ -16,14 +16,13 @@ public class ProjectVerticle extends AbstractVerticle {
 	
 	@Override
     public void start(Future<Void> startFuture) throws Exception {
+		
 		client = MongoClient.createShared(vertx, config());
 
         service = ProjectService.create(vertx, config(), client);
         ProxyHelper.registerService(ProjectService.class, vertx, service, ProjectService.ADDRESS);
 
-        startFuture.complete();
-		
-		
+        startFuture.complete();				
 	}
 	
     @Override
