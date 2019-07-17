@@ -20,6 +20,7 @@ export HW_PRJ=jsalvobr-homework-rhoar-temporal
 
 # Generate ocp project:
 oc new-project $HW_PRJ
+oc policy add-role-to-user view -z default -n $HW_PRJ
 ```
 
 FRELANCER SERVICE (spring boot) INSTALL AND DEPLOY
