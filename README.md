@@ -10,7 +10,7 @@ git clone https://github.com/jsalvobr/jsalvobr-homework-rhoar.git
 cd jsalvobr-homework-rhoar
 ```
 
-INSTALL ENVIROMENT
+INSTALL ENVIRONMENT
 ```bash
 # Openshift client login:
 oc login $OCP_URL -u $USER_NAME -p $PASSWORD
