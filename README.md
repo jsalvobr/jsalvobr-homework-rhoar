@@ -76,7 +76,7 @@ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$HW_PRJ
 export GATEWAY_URL=http://$(oc get route api-gateway -n $HW_PRJ -o template --template='{{.spec.host}}')
 ```
 
-CONSUMER SERVICE THROUGH API GATEWAY
+SERVICE CONSUMPTION THROUGH API GATEWAY
 ```bash
 # get all Freelancers:
 curl $GATEWAY_URL/gateway/freelancers
