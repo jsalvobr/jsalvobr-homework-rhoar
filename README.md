@@ -63,7 +63,7 @@ cd api-gateway/
 
 # Configure endopoint URL for gateway service: 
 # edit project-defaults.yml with the URL of the end services
-vi edit src/main/resources/project-defaults.yml
+vi src/main/resources/project-defaults.yml
 
 # with the output
 echo $FREELANCER_URL
