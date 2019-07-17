@@ -13,7 +13,7 @@ cd jsalvobr-homework-rhoar
 INSTALL ENVIROMENT
 ```bash
 # Openshift client login:
-oc login -u -p
+oc login $OCP_URL -u $USER_NAME -p $PASSWORD
 
 # Generate variable for ocp project:
 export HW_PRJ=jsalvobr-homework-rhoar-temporal
